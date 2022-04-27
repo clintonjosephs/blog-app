@@ -13,7 +13,7 @@ RSpec.describe 'Users', type: :request do
         end
 
         it 'includes the correct placeholder text' do
-            expect(response.body).to include '<h1>Here is a page for showing list of users</h1>'
+            expect(response.body).to include 'Here is a page for showing list of users'
         end
     end
 
