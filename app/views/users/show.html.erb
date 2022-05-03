@@ -1,3 +1,34 @@
-<h1>Here is a page for showing user details </h1>
+<h2 style="text-align:center"> <%= @user.Name %>'s details  </h2>
 
-<p>This page is under construction</p>
+<div class="row">
+    <div class="col-md-12 center">
+        <%= render partial: "shared/user_list", locals: {user: @user} %>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 center">
+        <div class="card">
+            <div class="card-body">
+               Bio: <p>
+               <i><%= @user.Bio %>  </i>   
+            </div>
+        </div>
+        <ul class="recent-posts">
+            <h3>Recent Posts</h3>
+            <% if @user.recent_posts.length > 0 %>
+                <% @user.recent_posts.each_with_index do |post, index| %>
+                    <li>
+                        <%= link_to user_post_path(@user.id, post.id) do %>
+                            <% render partial: "shared/post_list", locals: {post: post, track: index} %>
+                        <% end %>
+                    </li>
+                <% end %>
+            <% else %>
+                <p>No posts yet</p>
+            <% end %>
+        </ul>
+        <p>
+        <%= link_to "See all posts", user_posts_path(@user.id), class: "btn btn-primary show-all" %>
+    </div>
+</div>
+

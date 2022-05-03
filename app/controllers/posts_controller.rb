@@ -1,5 +1,11 @@
-class PostsController < ActionController::Base
-  def index; end
+class PostsController < ApplicationController
+  def index
+    @user = User.find(params[:user_id])
+  end
 
-  def show; end
+  def show
+    @post = Post.find(params[:id])
+    @comments = @post.comments
+    @likes = @post.likes
+  end
 end
