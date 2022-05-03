@@ -19,7 +19,16 @@
                 <% @user.recent_posts.each_with_index do |post, index| %>
                     <li>
                         <%= link_to user_post_path(@user.id, post.id) do %>
-                            <%= render partial: "shared/post_list", locals: {post: post, post_number: index += 1, user_details: true} %>
+                            <div class="card">
+                                <div class="card-body">
+                                    Post <%= "##{index += 1}" %>: <p>
+                                    <p><%=  post.Text.length < 100 ? post.Text : truncate(post.Text, length: 100, omission: '...') %></p>
+                                    <div style="float: right;">
+                                        <small>Comments: <%= post.comments.length > 0 ? post.comments.length : 0 %>,
+                                        Likes: <%= post.likes.length > 0 ? post.likes.length : 0 %> </small>
+                                    <div>
+                                </div>
+                            </div>
                         <% end %>
                     </li>
                 <% end %>
