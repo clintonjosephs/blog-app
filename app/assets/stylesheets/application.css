@@ -32,8 +32,17 @@ body {
     width: 100%;
 }
 
+.center a {
+    text-decoration: none;
+    color: #333;
+}
+
 .card {
-    width: 30rem !important;
+    width: 50rem !important;
+}
+
+.author_name {
+    font-size: 4.5rem;
 }
 
 .recent-posts {

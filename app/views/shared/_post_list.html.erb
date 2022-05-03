@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
         Post <%= "##{post_number}" %>: <p>
-        <p><%=  post.Text.length < 100 ? post.Text : truncate(post.Text, length: 100, omission: '...') %></p>
+        <p><%=  post.Text.length < 100 && user_details ? post.Text : truncate(post.Text, length: 100, omission: '...') %></p>
         <div style="float: right;">
             <small>Comments: <%= post.comments.length > 0 ? post.comments.length : 0 %>,
             Likes: <%= post.likes.length > 0 ? post.likes.length : 0 %> </small>

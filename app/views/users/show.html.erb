@@ -19,7 +19,7 @@
                 <% @user.recent_posts.each_with_index do |post, index| %>
                     <li>
                         <%= link_to user_post_path(post.id) do %>
-                            <%= render partial: "shared/post_list", locals: {post: post, post_number: index += 1} %>
+                            <%= render partial: "shared/post_list", locals: {post: post, post_number: index += 1, user_details: true} %>
                         <% end %>
                     </li>
                 <% end %>
