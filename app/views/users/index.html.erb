@@ -1,7 +1,9 @@
-<h1>Here is a page for showing list of users</h1>
 
-<% @all_users.each do |user| %>
-    <%= link_to user_path(user.id) do %>
-        <%= render partial: "user_list", locals: {user: user} %>
-    <% end %>
-<% end %>
+    <h2 style="text-align:center">Authors </h2>
+    <div class="center">
+        <% @all_users.each do |user| %>
+            <%= link_to user_path(user.id) do %>
+                <%= render partial: "shared/user_list", locals: {user: user} %>
+            <% end %>
+        <% end %>
+    </div>
