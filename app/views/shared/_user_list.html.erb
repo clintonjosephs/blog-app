@@ -6,7 +6,7 @@
     <div class="col-md-10">
       <div class="card-body">
         <h1 class="author_name"><%= user.Name %></h1>
-        <p class="card-text" style="float: right"><small class="text-muted">Number of posts: <%= user.PostsCounter > 0 ? user.PostsCounter : 0 %></small></p>
+        <p class="card-text" style="float: right"><small class="text-muted">Number of posts: <%= user.posts.length > 0 ? user.posts.length : 0 %></small></p>
       </div>
     </div>
   </div>

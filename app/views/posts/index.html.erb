@@ -10,10 +10,10 @@
                 <%= link_to user_post_path(@user.id, post.id) do %>
                     <% render partial: "shared/post_list", locals: {post: post, track: index} %>
                 <% end %>
-                <% if post.comments.length > 0 %>
+                <% if post.recent_comments.length > 0 %>
                    <div style="margin-top: 3rem;">
                     <h5>Comments</h5>
-                    <% post.comments.each do |comment| %>
+                    <% post.recent_comments.each do |comment| %>
                         <div class="card-text mb-3">
                             <b><%= comment.user.Name %></b> :
                             <%= comment.Text %>
@@ -25,7 +25,8 @@
                 <% end %>
                 </li>
             <% end %>
-        </ul>
+         </ul>
+         <%= link_to "Pagination", user_posts_path(@user.id), class: "btn btn-primary show-all" %>
         <% else %>
             <p>No posts yet</p>
         <% end %>
