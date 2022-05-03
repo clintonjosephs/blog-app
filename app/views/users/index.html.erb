@@ -1,3 +1,7 @@
 <h1>Here is a page for showing list of users</h1>
 
-<p>This page is under construction</p>
+<% @all_users.each do |user| %>
+    <%= link_to user_path(user.id) do %>
+        <%= render partial: "user_list", locals: {user: user} %>
+    <% end %>
+<% end %>
