@@ -18,7 +18,7 @@
             <% if @user.recent_posts.length > 0 %>
                 <% @user.recent_posts.each_with_index do |post, index| %>
                     <li>
-                        <%= link_to user_post_path(post.id) do %>
+                        <%= link_to user_post_path(@user.id, post.id) do %>
                             <%= render partial: "shared/post_list", locals: {post: post, post_number: index += 1, user_details: true} %>
                         <% end %>
                     </li>
@@ -27,12 +27,8 @@
                 <p>No posts yet</p>
             <% end %>
         </ul>
-    </div>
-</div>
-        </ul>
-    </div>
-</div>
-        </ul>
+        <p>
+        <%= link_to "See all posts", user_posts_path(@user.id), class: "btn btn-primary show-all" %>
     </div>
 </div>
 

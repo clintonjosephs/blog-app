@@ -60,3 +60,7 @@ body {
     color: #333;
     text-decoration: none;
 }
+
+.show-all {
+    color: #f5f5f5 !important;
+}
