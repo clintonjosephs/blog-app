@@ -1,3 +1,30 @@
-<h1>Here is a page for showing a post in detail and its comments</h1>
+<div class="card">
+    <div class="card-body">
+       <div class="card-title">
+            Post <%= "##{@post.id + 1} by #{@post.user.Name}" %> 
+            <span style="float: right;">
+                <small>Comments: <%= @comments.length > 0 ? @comments.length : 0 %>,
+                Likes: <%= @likes.length > 0 ? @likes.length : 0 %> </small>
+            <span>
+        </div>
+        <div class="card-text">
+            <%= @post.Text %>
+        </div>
+    </div>
+</div>
 
-<p>This page is under construction</p>
+<% if @comments.length > 0 %>
+<div class="card">
+    <div class="card-body">
+        <% @comments.each do |comment| %>
+            <div class="card-text mb-3">
+                <b><%= comment.user.Name %></b> :
+                <%= comment.Text %>
+            </div>
+        <% end %>
+    </div>
+</div>
+<% else %>
+  <h5 class="mt-3"> No comment(s) for this post yet </h5>
+<% end %>
+
