@@ -4,7 +4,7 @@ class LikesController < ApplicationController
     new_like.post_id = params[:post_id]
     new_like.user_id = current_user.id
 
-    check_liked = Like.find(current_user.id)
+    check_liked = Like.find_by(user_id: current_user.id, post_id: new_like.post_id)
     if check_liked.nil?
       respond_to do |format|
         format.html do
@@ -15,8 +15,9 @@ class LikesController < ApplicationController
           end
         end
       end
+    else 
+        flash[:danger] = 'You already liked this post'
     end
-    flash[:danger] = 'You already liked this post'
     redirect_to user_post_path(current_user.id, params[:post_id])
   end
 end
