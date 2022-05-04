@@ -10,10 +10,12 @@
   </head>
 
   <body>
-  <% flash.each do |type, msg| %>
-    <div class="alert alert-info">
-      <%= msg %>
-    </div>
+  <% if flash.any? %>
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-<%= type %> text-center">
+        <%= msg %>
+      </div>
+    <% end %>
   <% end %>
   <div class="container">
     <%= yield %>

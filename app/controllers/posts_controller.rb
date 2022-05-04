@@ -12,10 +12,14 @@ class PostsController < ApplicationController
     new_post = current_user.posts.build(post_params)
 
     respond_to do |format|
-      if new_post.save
-        format.html { redirect_to user_posts_path(current_user), notice: 'Post was successfully created.' }
-      else
-        format.html { render :new, notice: 'Post was not created.' }
+      format.html do
+        if new_post.save
+          flash[:success] = 'Post was successfully created.'
+          redirect_to user_posts_path(current_user)
+        else
+          flash[:danger] = 'Post was not created.'
+          render :new
+        end
       end
     end
   end
