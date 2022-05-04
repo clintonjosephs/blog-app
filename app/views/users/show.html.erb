@@ -1,5 +1,5 @@
 <h2 style="text-align:center"> <%= @user.Name %>'s details  </h2>
-
+<%= render partial: 'shared/navbar', locals: {post: false, id: 'nil'} %>
 <div class="row">
     <div class="col-md-12 center">
         <%= render partial: "shared/user_list", locals: {user: @user} %>

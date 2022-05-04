@@ -1,0 +1,17 @@
+<div class="row">
+ <div class="col-md-12 center">
+    <ul class="nav">
+        <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link" %>
+        </li>
+        <% if post %>
+            <li class="nav-item">
+                <%= link_to "Create new article", new_user_post_path(id), :"data-turbolinks" => false, class: "nav-link" %>
+            </li>
+        <% end %>
+        <li class="nav-item">
+        <%= link_to "Back", :back, :"data-turbolinks" => false, class: "nav-link" %>
+        </li>
+    </ul>
+  </div>
+</div>

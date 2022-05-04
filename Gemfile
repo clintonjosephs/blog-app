@@ -12,6 +12,9 @@ gem 'sprockets-rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
+# wysiwyg
+gem 'tinymce-rails'
+
 # rubocop
 gem 'rubocop', '>= 1.0', '< 2.0'
 
