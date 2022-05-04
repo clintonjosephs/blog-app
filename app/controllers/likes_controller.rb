@@ -15,8 +15,8 @@ class LikesController < ApplicationController
           end
         end
       end
-    else 
-        flash[:danger] = 'You already liked this post'
+    else
+      flash[:danger] = 'You already liked this post'
     end
     redirect_to user_post_path(current_user.id, params[:post_id])
   end
