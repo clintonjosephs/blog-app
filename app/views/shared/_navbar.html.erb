@@ -6,11 +6,11 @@
         </li>
         <% if post %>
             <li class="nav-item">
-                <%= link_to "Create new article", new_user_post_path(id), class: "nav-link" %>
+                <%= link_to "Create new article", new_user_post_path(id), :"data-turbolinks" => false, class: "nav-link" %>
             </li>
         <% end %>
         <li class="nav-item">
-        <%= link_to "Back", :back, class: "nav-link" %>
+        <%= link_to "Back", :back, :"data-turbolinks" => false, class: "nav-link" %>
         </li>
     </ul>
   </div>
