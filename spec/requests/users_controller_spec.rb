@@ -13,12 +13,12 @@ RSpec.describe 'Users', type: :request do
     end
 
     it 'includes the correct placeholder text' do
-      expect(response.body).to include 'Here is a page for showing list of users'
+      expect(response.body).to include 'Authors'
     end
   end
 
   describe 'GET #show' do
-    before(:example) { get('/users/15') } # get(:show, params: { id: 1 })
+    before(:example) { get('/users/1') } # get(:show, params: { id: 1 })
 
     it 'returns http success' do
       expect(response).to have_http_status(:ok)
@@ -29,7 +29,7 @@ RSpec.describe 'Users', type: :request do
     end
 
     it 'includes the correct placeholder text' do
-      expect(response.body).to include 'Here is a page for showing user details'
+      expect(response.body).to include 'Recent Posts'
     end
   end
 end
