@@ -17,20 +17,32 @@
     </div>
 </div>
 
-<% if @comments.length > 0 %>
-<div class="card">
-    <div class="card-body">
-        <% @comments.each do |comment| %>
-            <div class="card-text mb-3">
-                <b><%= comment.user.Name %></b> :
-                <%= comment.Text %>
+    <% if @comments.length > 0 %>   
+        <div class="card mt-1">
+            <div class="card-body">
+                <% @comments.reverse.each do |comment| %>
+                    <div class="card-text mb-3">
+                        <b><%= comment.user.Name %></b> :
+                        <%= comment.Text %>
+                    </div>
+                <% end %>
             </div>
-        <% end %>
+        </div>
+    <% else %>
+        <h5 class="mt-3"> No comment(s) for this post yet </h5>
+    <% end %>
+    <div class="card mt-1">
+        <div class="card-body">
+            <%= form_with model: [@post, @post.comments.build], class: "mt-3 form", local: true do |form| %>
+                <div class="form-floating mb-3">
+                    <%= form.text_area :Text, class: "form-control", required: true, placeholder: "Write your comment here" %>
+                    <%= form.label :Text, "Comment!" %>
+                </div>
+                <div class="form-group mt-3">
+                    <%= form.submit "Post Comment", data: { confirm: "Post this comment?" } , class: "btn-info form-control" %>
+                </div>
+            <% end %>
+        </div>
     </div>
-</div>
-<% else %>
-  <h5 class="mt-3"> No comment(s) for this post yet </h5>
-<% end %>
-
 </div>
 </div>
