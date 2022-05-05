@@ -64,3 +64,11 @@ body {
 .show-all {
   color: #f5f5f5 !important;
 }
+
+.error-list {
+  padding-left: 0;
+}
+
+.error-list li {
+  list-style: none;
+}

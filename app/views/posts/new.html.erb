@@ -1,7 +1,6 @@
 <%= render partial: 'shared/navbar', locals: {post: false, id: 'nil'} %>
 <div class="row">
-    <div class="col-md-12 center">
-        <%= form_with model: [@current_user, @current_user.posts.build], local: true do |form| %>
+        <%= form_with model: @post, url: user_posts_path, local: true do |form| %>
             <div class="form-floating mb-3">
                 <%= form.text_field :Title, class: "form-control", required: true, placeholder: "Post title" %>
                 <%= form.label :Title, "Whats on your mind today?" %>
