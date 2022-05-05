@@ -6,10 +6,12 @@ class PostsController < ApplicationController
 
   def new
     @current_user = current_user
+    @post = Post.new
   end
 
   def create
     new_post = current_user.posts.build(post_params)
+    new_post.CommentsCounter = 0
 
     respond_to do |format|
       format.html do
@@ -18,7 +20,7 @@ class PostsController < ApplicationController
           redirect_to user_posts_path(current_user)
         else
           flash[:danger] = 'Post was not created.'
-          render :new
+          redirect_to new_user_post_path(current_user.id)
         end
       end
     end
