@@ -15,9 +15,6 @@ gem 'pg', '~> 1.1'
 # wysiwyg
 gem 'tinymce-rails'
 
-# eager loading
-gem 'bullet', group: 'development'
-
 # rubocop
 gem 'rubocop', '>= 1.0', '< 2.0'
 
@@ -63,6 +60,7 @@ gem 'rails-controller-testing'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'bullet'
 end
 
 group :development do

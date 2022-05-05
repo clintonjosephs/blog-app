@@ -18,7 +18,7 @@ RSpec.describe 'Posts', type: :request do
   end
 
   describe 'GET #show' do
-    before(:example) { get('/users/1/posts/2') } # get(:show, params: { id: 1 })
+    before(:example) { get('/users/6/posts/3') } # get(:show, params: { id: 1 })
 
     it 'successfully gets details of post 10 from user 11' do
       expect(response).to have_http_status(:ok)
