@@ -16,7 +16,7 @@ gem 'pg', '~> 1.1'
 gem 'tinymce-rails'
 
 # eager loading
-gem "bullet", group: 'development'
+gem 'bullet', group: 'development'
 
 # rubocop
 gem 'rubocop', '>= 1.0', '< 2.0'

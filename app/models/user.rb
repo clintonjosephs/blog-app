@@ -7,6 +7,6 @@ class User < ApplicationRecord
   validates :PostsCounter, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def recent_posts
-    posts.order(created_at: :desc).limit(3).includes([:comments, :likes])
+    posts.order(created_at: :desc).limit(3).includes(%i[comments likes])
   end
 end
