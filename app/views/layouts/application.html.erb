@@ -13,7 +13,7 @@
   <% if flash.any? %>
     <% flash.each do |type, msg| %>
       <div class="alert alert-<%= type %> text-center">
-        <%= msg %>
+        <%= msg.html_safe %>
       </div>
     <% end %>
   <% end %>

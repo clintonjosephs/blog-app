@@ -26,7 +26,7 @@
     <% if @comments.length > 0 %>   
         <div class="card mt-1">
             <div class="card-body">
-                <% @comments.reverse.each do |comment| %>
+                <% @comments.includes(:user).reverse.each do |comment| %>
                     <div class="card-text mb-3">
                         <b><%= comment.user.Name %></b> :
                         <%= comment.Text %>

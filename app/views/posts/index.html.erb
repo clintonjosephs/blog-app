@@ -5,7 +5,7 @@
         <%= render partial: "shared/user_list", locals: {user: @user} %>
         <% if @user.posts.length > 0 %>
            <ul class="recent-posts">
-            <% @posts.each_with_index do |post, index| %>
+            <% @posts.includes([:comments, :likes]).each_with_index do |post, index| %>
                 <li>
                 <%= link_to user_post_path(@user.id, post.id) do %>
                     <% render partial: "shared/post_list", locals: {post: post, track: index} %>
@@ -13,7 +13,7 @@
                 <% if post.recent_comments.length > 0 %>
                    <div style="margin-top: 3rem;">
                     <h5>Comments</h5>
-                    <% post.recent_comments.each do |comment| %>
+                    <% post.recent_comments.includes(:user).each do |comment| %>
                         <div class="card-text mb-3">
                             <b><%= comment.user.Name %></b> :
                             <%= comment.Text %>
