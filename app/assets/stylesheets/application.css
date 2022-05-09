@@ -119,7 +119,7 @@ body {
 .login {
   margin: 5rem;
   min-height: 60vh;
-  padding: 0px;
+  padding: 0;
 }
 
 .login-controls {
@@ -127,8 +127,8 @@ body {
 }
 
 .login-img {
-  height:100%;
-  width:100%;
+  height: 100%;
+  width: 100%;
 }
 
 .img-container {
