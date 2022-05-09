@@ -80,9 +80,57 @@ body {
 }
 
 .notice {
-  color: red;
+  padding: 20px;
+  background-color: #36b667; /* green */
+  color: white;
+  margin-bottom: 15px;
 }
 
 .alert {
-  color: red;
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+
+.shadow {
+  -moz-box-shadow: 0 0 3px #ccc;
+  -webkit-box-shadow: 0 0 3px #ccc;
+  box-shadow: 0 0 35px #ccc;
+}
+
+.login {
+  margin: 5rem;
+  min-height: 60vh;
+  padding: 0px;
+}
+
+.login-controls {
+  padding: 2rem;
+}
+
+.login-img {
+  height:100%;
+  width:100%;
+}
+
+.img-container {
+  background: #fff;
 }
