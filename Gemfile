@@ -54,6 +54,9 @@ gem 'bootsnap', require: false
 # asser_template has been extracted to a gem
 gem 'rails-controller-testing'
 
+# letter opener
+gem "letter_opener", group: :development
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

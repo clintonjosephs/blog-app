@@ -42,7 +42,8 @@ body {
 }
 
 .author_name {
-  font-size: 4.5rem;
+  font-size: 2.5rem;
+  margin-top: 1.5rem;
 }
 
 .recent-posts {
@@ -74,8 +75,14 @@ body {
 }
 
 .welcome-image {
-  background: url(https://thumbs.dreamstime.com/b/blog-information-website-concept-workplace-background-text-view-above-127465079.jpg) no-repeat;
-  background-size: cover;
   border-radius: 3px;
   margin: 0px;
+}
+
+.notice {
+  color: red;
+}
+
+.alert {
+  color: red;
 }
