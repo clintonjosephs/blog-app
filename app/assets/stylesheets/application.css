@@ -72,3 +72,10 @@ body {
 .error-list li {
   list-style: none;
 }
+
+.welcome-image {
+  background: url(https://thumbs.dreamstime.com/b/blog-information-website-concept-workplace-background-text-view-above-127465079.jpg) no-repeat;
+  background-size: cover;
+  border-radius: 3px;
+  margin: 0px;
+}
