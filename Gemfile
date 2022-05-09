@@ -55,7 +55,7 @@ gem 'bootsnap', require: false
 gem 'rails-controller-testing'
 
 # letter opener
-gem "letter_opener", group: :development
+gem 'letter_opener', group: :development
 
 # Use Sass to process CSS
 # gem "sassc-rails"
