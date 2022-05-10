@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html do
         if new_comment.save
+          new_comment.update_comment_counter
           flash[:success] = 'Comment has been posted successfully'
         else
           flash[:danger] = 'Comment was not created.'
@@ -14,6 +15,10 @@ class CommentsController < ApplicationController
         redirect_to user_post_path(current_user.id, params[:post_id])
       end
     end
+  end
+
+  def destroy
+    puts 'i deleted this comment'
   end
 
   private

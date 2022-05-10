@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   put "users/update/:id" => "users#update"
   delete "users/destroy/:id" => "users#destroy"
   resources :users, only: [:index, :show] do   
-    resources :posts, only: [:index, :new, :create, :show]
+    resources :posts, only: [:index, :new, :create, :show, :destroy]
   end
 
   resources :posts do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create]
   end
 end

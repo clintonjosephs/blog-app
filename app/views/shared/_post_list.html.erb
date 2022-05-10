@@ -1,7 +1,8 @@
 <div class="card">
     <div class="card-body">
         Post <%= "##{track += 1}" %>: <p>
-        <p><%=  post.Text.length < 100 ? post.Text.html_safe : truncate(post.Text.html_safe, length: 100, omission: '...') %></p>
+        <h5><%=  post.Title.length < 100 ? post.Title.html_safe : truncate(post.Title.html_safe, length: 100, omission: '...') %></h5>
+        <i><%=  post.Text.length < 100 ? post.Text.html_safe : truncate(post.Text.html_safe, length: 100, omission: '...') %></i>
         <div style="float: right;">
             <small>Comments: <%= post.comments.length > 0 ? post.comments.length : 0 %>,
             Likes: <%= post.likes.length > 0 ? post.likes.length : 0 %> </small>

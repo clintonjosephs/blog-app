@@ -15,11 +15,11 @@ class Ability
         can :create, Like
 
         can :destroy, Post do |post|
-          post.user_id = user.id
+          post.user_id == user.id
         end
 
         can :destroy, Comment do |comment|
-          comment.user_id = user.id
+          comment.user_id == user.id
         end
       end
     #
