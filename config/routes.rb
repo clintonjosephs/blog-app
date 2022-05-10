@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "users#index"
   put "users/update/:id" => "users#update"
-  delete "users/destroy/:id" => "users#destroy"
+  delete "users/:id" => "users#destroy"
   resources :users, only: [:index, :show] do   
     resources :posts, only: [:index, :new, :create, :show, :destroy]
   end

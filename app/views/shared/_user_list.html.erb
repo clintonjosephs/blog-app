@@ -15,6 +15,7 @@
             <% end %>
             <small class="text-muted">Number of posts: <%= user.posts.length > 0 ? user.posts.length : 0 %></small>
         </p>
+        <%= button_to '<i class="fa fa-trash trash shadow" aria-hidden="true"></i>'.html_safe, user_path(user.id), method: :delete,  class: 'delete-item' if can? :destroy, user  %>
       </div>
     </div>
   </div>
