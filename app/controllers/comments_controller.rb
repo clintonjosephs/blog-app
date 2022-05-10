@@ -18,7 +18,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    puts 'i deleted this comment'
+    comment_to_delete = Comment.find(params[:id])
+    post_with_comment = Post.find(params[:post_id])
+    post_with_comment.CommentsCounter -= 1
+    comment_to_delete.destroy
+    post_with_comment.save
+    flash[:info] = 'You comment has been deleted successfully!'
+    redirect_to user_post_path(comment_to_delete.user_id, params[:post_id])
   end
 
   private

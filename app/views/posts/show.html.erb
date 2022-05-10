@@ -30,7 +30,7 @@
                     <div class="card-text mb-3">
                         <b><%= comment.user.Name %></b> :
                         <%= comment.Text %>
-                        <%= button_to '<i class="fa fa-trash trash shadow" aria-hidden="true"></i>'.html_safe, post_comments_path(@post.id), method: :delete,  class: 'delete-item' if can? :destroy, comment  %>
+                        <%= button_to '<i class="fa fa-trash trash shadow" aria-hidden="true"></i>'.html_safe, post_comment_path(@post.id, comment.id), method: :delete,  class: 'delete-item' if can? :destroy, comment  %>
                     </div>
                 <% end %>
             </div>
