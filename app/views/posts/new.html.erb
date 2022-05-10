@@ -1,5 +1,5 @@
-<%= render partial: 'shared/navbar', locals: {post: false, id: 'nil'} %>
 <div class="row">
+   <div class="col-md-7 offset-md-2 mt-3">
         <%= form_with model: @post, url: user_posts_path, local: true do |form| %>
             <div class="form-floating mb-3">
                 <%= form.text_field :Title, class: "form-control", required: true, placeholder: "Post title" %>
@@ -10,6 +10,7 @@
                 <%= form.submit "Post Article", class: "btn-info form-control", data: {disable_with: "Loading..."} %>
             </div>
         <% end %>
+        </div>
     </div>
 </div>
 

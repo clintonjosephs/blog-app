@@ -7,6 +7,7 @@
     <%= tinymce_assets %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
@@ -14,11 +15,49 @@
     <% flash.each do |type, msg| %>
       <div class="alert alert-<%= type %> text-center">
         <%= msg.html_safe %>
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
       </div>
     <% end %>
   <% end %>
+    <% if user_signed_in? %>
   <div class="container">
-    <%= yield %>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="#">Blog App</a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <%= link_to "All authors", root_path, class: "nav-link" %>
+        </li>
+        <% if user_signed_in? %>
+            <li class="nav-item">
+                <%= link_to "Edit Profile", edit_user_registration_path, :"data-turbolinks" => false, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :"data-turbolinks" => false, class: "nav-link" %>
+            </li>
+        <% else %>
+            <li class="nav-item">
+                <%= link_to "Sign In", new_user_session_path, :"data-turbolinks" => false, class: "nav-link" %>
+            </li>
+        <% end %>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
-  </body>
+  </div>
+</nav>
+<% elsif controller_name != 'sessions' && controller_name != 'confirmations' %>
+    <div style="float:right">
+      <%= link_to "Sign In", new_user_session_path, :"data-turbolinks" => false, class: "btn btn-dark" %>
+    </div>
+<% end %>
+  <%= yield %>
+  </div>
+</body>
 </html>

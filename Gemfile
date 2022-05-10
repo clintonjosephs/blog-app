@@ -33,6 +33,9 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
+# add devise for authentication
+gem 'devise'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -50,6 +53,9 @@ gem 'bootsnap', require: false
 
 # asser_template has been extracted to a gem
 gem 'rails-controller-testing'
+
+# letter opener
+gem 'letter_opener', group: :development
 
 # Use Sass to process CSS
 # gem "sassc-rails"

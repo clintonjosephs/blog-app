@@ -1,0 +1,39 @@
+<section class="row login shadow">
+    <div class="col-md-4 login-controls">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="email">
+              <i class="fa fa-user" aria-hidden="true"></i>
+            </span>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="password">
+              <i class="fa fa-key" aria-hidden="true"></i>
+            </span>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Password" %>
+          </div>
+          <div class="row form-group mb-2">
+            <div class="col-md-6">
+              <% if devise_mapping.rememberable? %>
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me, class: 'form-label'%>
+              <% end %>
+            </div>
+            <div class="col-md-6">
+              <div class="actions mb-2">
+                <%= f.submit "Log in", class: "btn btn-primary form-control" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+              <%= render "devise/shared/links" %>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 img-container">
+      <img src="https://blog.hubspot.com/hubfs/GettyImages-974683580.jpg" class="login-img" alt="...">
+    </div>
+</div>
