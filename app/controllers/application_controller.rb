@@ -1,7 +1,3 @@
-# class ApplicationController < ActionController::Base
-#   add_flash_types :danger, :info, :warning, :success, :messages, :notice, :alert
-# end
-
 class ApplicationController < ActionController::Base
   add_flash_types :danger, :info, :warning, :success, :messages, :notice, :alert
 
@@ -16,7 +12,7 @@ class ApplicationController < ActionController::Base
       u.permit(:Name, :Bio, :Photo, :password, :password_confirmation, :email)
     end
     devise_parameter_sanitizer.permit(:account_update) do |u|
-      u.permit(:Name, :Bio, :Photo, :password, :password_confirmation, :email, :current_password, :role)
+      u.permit(:Name, :Bio, :Photo, :password, :password_confirmation, :email, :current_password)
     end
   end
 end

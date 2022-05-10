@@ -6,7 +6,15 @@
     <div class="col-md-10">
       <div class="card-body">
         <h3 class="author_name"><%= user.Name %></h3>
-        <p class="card-text" style="float: right"><small class="text-muted">Number of posts: <%= user.posts.length > 0 ? user.posts.length : 0 %></small></p>
+        <p class="card-text" style="float: right">
+            <% if current_user != nil && current_user.role == 'admin' && show_status%>
+              <%= form_with model: @user_update, url: "/users/update/#{user.id}" , method: 'PUT', local: true do |form| %>
+                  <%= form.label :role, 'Is Admin?' %>
+                  <%= form.check_box :role, class: "form-check-input", checked: user.role == 'admin', :onclick => "this.form.submit()" %>
+              <% end %>
+            <% end %>
+            <small class="text-muted">Number of posts: <%= user.posts.length > 0 ? user.posts.length : 0 %></small>
+        </p>
       </div>
     </div>
   </div>

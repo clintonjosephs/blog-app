@@ -79,20 +79,6 @@ body {
   margin: 0;
 }
 
-.notice {
-  padding: 20px;
-  background-color: #36b667; /* green */
-  color: white;
-  margin-bottom: 15px;
-}
-
-.alert {
-  padding: 20px;
-  background-color: #f44336; /* Red */
-  color: white;
-  margin-bottom: 15px;
-}
-
 /* The close button */
 .closebtn {
   margin-left: 15px;
