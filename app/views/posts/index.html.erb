@@ -9,7 +9,7 @@
 </div>
 <div class="row">
     <div class="col-md-12 center">
-        <%= render partial: "shared/user_list", locals: {user: @user} %>
+        <%= render partial: "shared/user_list", locals: {user: @user, show_status: false} %>
         <% if @user.posts.length > 0 %>
            <ul class="recent-posts">
             <% @posts.includes([:comments, :likes]).each_with_index do |post, index| %>
