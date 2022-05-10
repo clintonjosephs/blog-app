@@ -45,10 +45,17 @@
             </li>
         <% end %>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <div class="d-flex flex-column user-details">
+        <div>
+            <i class="fa fa-user-o" aria-hidden="true"></i> 
+            <%= current_user.Name %>
+        </div> 
+        <div>
+          <i class="fa fa-envelope-open" aria-hidden="true"></i>
+          <%= current_user.email %>
+        </div>
+        <div>Role: <%= current_user.role %></div>
+      </div>
     </div>
   </div>
 </nav>

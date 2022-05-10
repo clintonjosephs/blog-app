@@ -134,3 +134,8 @@ body {
 .img-container {
   background: #fff;
 }
+
+.user-details {
+  font-size: small;
+  color: #fff;
+}
