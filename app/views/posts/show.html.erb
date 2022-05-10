@@ -5,13 +5,14 @@
     <div class="card-body">
        <div class="card-title">
             Post <%= "##{@post.id + 1} by #{@post.user.Name}" %> 
-            <span style="float: right;">
-                <small>Comments: <%= @comments.length > 0 ? @comments.length : 0 %>,
-                Likes: <%= @likes.length > 0 ? @likes.length : 0 %> </small>
-            <span>
         </div>
         <div class="card-text">
             <%= @post.Text.html_safe %>
+            <%= button_to '<i class="fa fa-trash trash shadow" aria-hidden="true"></i>'.html_safe, user_post_path(@post.user_id, @post.id), method: "delete",  class: 'delete-item' if can? :destroy, @post  %>
+        </div>
+        <div class="float-left">
+            <small>Comments: <%= @comments.length > 0 ? @comments.length : 0 %>,
+            Likes: <%= @likes.length > 0 ? @likes.length : 0 %> </small>
         </div>
         <div class="float-end">
             <%= form_with model: [@post, @post.likes.build], local: true do |form| %>
@@ -29,6 +30,7 @@
                     <div class="card-text mb-3">
                         <b><%= comment.user.Name %></b> :
                         <%= comment.Text %>
+                        <%= button_to '<i class="fa fa-trash trash shadow" aria-hidden="true"></i>'.html_safe, post_comment_path(@post.id, comment.id), method: :delete,  class: 'delete-item' if can? :destroy, comment  %>
                     </div>
                 <% end %>
             </div>

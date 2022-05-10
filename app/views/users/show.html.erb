@@ -1,7 +1,7 @@
 <h2 style="text-align:center" class="mt-3"> <%= @user.Name %>'s details  </h2>
 <div class="row">
     <div class="col-md-12 center">
-        <%= render partial: "shared/user_list", locals: {user: @user} %>
+        <%= render partial: "shared/user_list", locals: {user: @user, show_status: false} %>
     </div>
 </div>
 <div class="row">
@@ -16,7 +16,7 @@
             <h3>Recent Posts</h3>
             <% if @user.recent_posts.length > 0 %>
                 <% @user.recent_posts.each_with_index do |post, index| %>
-                    <li>
+                    <li class="shadow">
                         <%= link_to user_post_path(@user.id, post.id) do %>
                             <% render partial: "shared/post_list", locals: {post: post, track: index} %>
                         <% end %>

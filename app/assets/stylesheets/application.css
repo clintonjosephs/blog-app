@@ -54,7 +54,6 @@ body {
 .recent-posts li {
   list-style: none;
   margin-bottom: 0.5rem;
-  border: #333 1px solid;
 }
 
 .recent-posts li a {
@@ -79,20 +78,6 @@ body {
   margin: 0;
 }
 
-.notice {
-  padding: 20px;
-  background-color: #36b667; /* green */
-  color: white;
-  margin-bottom: 15px;
-}
-
-.alert {
-  padding: 20px;
-  background-color: #f44336; /* Red */
-  color: white;
-  margin-bottom: 15px;
-}
-
 /* The close button */
 .closebtn {
   margin-left: 15px;
@@ -111,9 +96,9 @@ body {
 }
 
 .shadow {
-  -moz-box-shadow: 0 0 3px #ccc;
-  -webkit-box-shadow: 0 0 3px #ccc;
-  box-shadow: 0 0 35px #ccc;
+  -moz-box-shadow: 0 0 3px #ccc !important;
+  -webkit-box-shadow: 0 0 3px #ccc !important;
+  box-shadow: 0 0 35px #ccc !important;
 }
 
 .login {
@@ -133,4 +118,27 @@ body {
 
 .img-container {
   background: #fff;
+}
+
+.user-details {
+  font-size: small;
+  color: #fff;
+}
+
+.delete-item {
+  line-height: 12px;
+  width: 2rem;
+  font-size: 1.5rem;
+  margin-top: 1px;
+  margin-right: 2px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.trash {
+  color: red;
 }
