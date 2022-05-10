@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   end
 
   def update
-   user_to_update = User.find(params[:id])
-   user_to_update.role = params[:role] == "0" ? 'nil' : "admin"
+    user_to_update = User.find(params[:id])
+    user_to_update.role = params[:role] == '0' ? 'nil' : 'admin'
     if user_to_update.save
       if user_to_update.role == 'nil'
         flash[:info] = "#{user_to_update.Name}'s no longer an admin"
