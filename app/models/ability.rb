@@ -6,8 +6,10 @@ class Ability
     
       user ||= User.new # guest user (not logged in)
       can :create, Post, user_id: user.id
-      if user.admin?
-        can :manage, :all
+      can :delete, Post, user_id: user.id
+      can :delete, Comment, user_id: user.id
+      return unless user.role == "admin"
+        can :delete, :all
       else
         can :read, :all
       end
