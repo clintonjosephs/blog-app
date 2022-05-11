@@ -43,12 +43,6 @@ $ bundle install
 $ npm install
 ```
 
-## Start rails server (puma)
-
-```bash
-$ rails server
-```
-
 ## Run test on project with
 
 ```bash
@@ -61,6 +55,11 @@ $ rspec spec/name_of_test_file.rb
   - to run test cases individually
 ```
 
+## Start rails server (puma)
+
+```bash
+$ rails server
+```
 
 Open [http://localhost:3000/](http://localhost:3000/) in your browser
 
