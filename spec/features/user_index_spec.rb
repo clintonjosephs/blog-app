@@ -24,7 +24,7 @@ RSpec.describe 'Users index features' do
   scenario 'Confirm that all user profile picture shows on the page' do
     users = User.all
 
-    # check that all users image tag is present
+    # check that all users image tag is available
     expect(page).to have_css('img.img-fluid.rounded-start', count: User.count)
 
     # check that each users image tag has the correct image
