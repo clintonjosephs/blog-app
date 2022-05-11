@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
+  user = User.includes(:posts).first
   describe 'GET #index' do
-    before(:example) { get('/users/1/posts') } # get(:index)
+    before(:example) { get("/users/#{user.id}/posts") } # get(:index)
 
     it 'successfully gets list of posts for a particular user' do
       expect(response).to have_http_status(:ok)
@@ -18,7 +19,7 @@ RSpec.describe 'Posts', type: :request do
   end
 
   describe 'GET #show' do
-    before(:example) { get('/users/6/posts/3') } # get(:show, params: { id: 1 })
+    before(:example) { get("/users/#{user.id}/posts/#{user.posts.first.id}") }
 
     it 'successfully gets details of post 10 from user 11' do
       expect(response).to have_http_status(:ok)

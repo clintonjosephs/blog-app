@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  user = User.new(Name: 'Benneth Green', Photo: 'https://imagescores.com/file2.jpg',
-                  Bio: 'An amazing writer from the medivial times', PostsCounter: 0)
-  before { user.save }
+  user = FactoryBot.create(:user)
 
   it 'is valid with valid attributes' do
     expect(user).to be_valid
