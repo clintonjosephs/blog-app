@@ -1,39 +1,41 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  user = FactoryBot.create(:user)
+  before(:each) do
+    @user = FactoryBot.create(:user)
+  end
 
   it 'is valid with valid attributes' do
-    expect(user).to be_valid
+    expect(@user).to be_valid
   end
 
   it 'is not valid without a name' do
-    user.Name = nil
-    expect(user).to_not be_valid
+    @user.Name = nil
+    expect(@user).to_not be_valid
   end
 
   it 'is valid if Name length is less than 250' do
-    user.Name = 'Benneth Green'
-    expect(user.Name.length).to be <= 250
+    @user.Name = 'Benneth Green'
+    expect(@user.Name.length).to be <= 250
   end
 
   it 'is not valid if Name length is greater than 250' do
-    user.Name = 'Benneth Green' * 10
-    expect(user.Name.length).to be <= 250
+    @user.Name = 'Benneth Green' * 10
+    expect(@user.Name.length).to be <= 250
   end
 
   it 'is not valid without PostCounter' do
-    user.PostsCounter = nil
-    expect(user).to_not be_valid
+    @user.PostsCounter = nil
+    expect(@user).to_not be_valid
   end
 
   it 'is valid if PostCounter is a number' do
-    user.PostsCounter = 1
-    expect(user.PostsCounter).to be_a(Integer)
+    @user.PostsCounter = 1
+    expect(@user.PostsCounter).to be_a(Integer)
   end
 
   it 'is valid if PostCounter is greater than or equal to 0' do
-    user.PostsCounter = 0
-    expect(user.PostsCounter).to be >= 0
+    @user.PostsCounter = 0
+    expect(@user.PostsCounter).to be >= 0
   end
 end
