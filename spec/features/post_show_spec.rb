@@ -1,12 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe 'Post show feature' do
-  user = User.includes(:posts).first
-  post = user.posts.first
-
   before(:each) do
-    visit(user_post_path(user.id, post.id))
-  end
+    @user = FactoryBot.create(:user)
+     m = 5
+     while m > 0
+       FactoryBot.create(:post, user_id: @user.id)
+       m -= 1
+     end
+     @post = @user.posts.first
+     visit(user_post_path(@user.id, @post.id))
+   end
 
   scenario 'Confirm that we see the post title' do
     expect(page).to have_content(post.Title.to_s)
