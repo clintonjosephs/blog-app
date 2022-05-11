@@ -51,7 +51,7 @@ $ rspec
 ```
 
 ```bash
-$ rspec spec/name_of_test_file.rb
+$ rspec spec/folder_name/name_of_test_file.rb
   - to run test cases individually
 ```
 
