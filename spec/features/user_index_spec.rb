@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Users index features' do
   before(:each) do
     User.destroy_all
-    m = 3
+    m = 4
     while m > 0
       @user = FactoryBot.create(:user, PostsCounter: 2)
       FactoryBot.create(:post, user_id: @user.id)
