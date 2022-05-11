@@ -49,11 +49,18 @@ $ npm install
 $ rails server
 ```
 
-## Test
+## Run test on project with
 
 ```bash
 $ rspec
+  - this will run all the test cases
 ```
+
+```bash
+$ rspec spec/name_of_test_file.rb
+  - to run test cases individually
+```
+
 
 Open [http://localhost:3000/](http://localhost:3000/) in your browser
 
