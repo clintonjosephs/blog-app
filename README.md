@@ -43,6 +43,18 @@ $ bundle install
 $ npm install
 ```
 
+## Run test on project with
+
+```bash
+$ rspec
+  - this will run all the test cases
+```
+
+```bash
+$ rspec spec/folder_name/name_of_test_file.rb
+  - to run test cases individually
+```
+
 ## Start rails server (puma)
 
 ```bash
