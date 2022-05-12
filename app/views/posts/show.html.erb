@@ -24,16 +24,19 @@
 </div>
 
     <% if @comments.length > 0 %>   
-        <div class="card mt-1">
-            <div class="card-body">
-                <% @comments.includes(:user).reverse.each do |comment| %>
+        <div style="background: white; height: 100%;" class="mt-2 py-3">
+        <h5 style="text-align: center;">Comments</h5>
+        <% @comments.includes(:user).reverse.each do |comment| %>
+            <div class="card mt-1">
+                <div class="card-body">
                     <div class="card-text mb-3">
                         <b><%= comment.user.Name %></b> :
                         <%= comment.Text %>
                         <%= button_to '<i class="fa fa-trash trash shadow" aria-hidden="true"></i>'.html_safe, post_comment_path(@post.id, comment.id), method: :delete,  class: 'delete-item' if can? :destroy, comment  %>
                     </div>
-                <% end %>
+                </div>
             </div>
+        <% end %>
         </div>
     <% else %>
         <h5 class="mt-3"> No comment(s) for this post yet </h5>
