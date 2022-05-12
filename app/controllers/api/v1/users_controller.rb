@@ -1,7 +1,9 @@
 module Api
   module V1
     require 'json_web_token'
+    require 'bcrypt'
     class UsersController < ApiController
+      include BCrypt
       before_action :authorize_request, except: :login
       def index
         users = User.all
@@ -10,7 +12,7 @@ module Api
 
       def login
         @user = User.find_by_email(params[:email])
-        if @user
+        if Password.new(@user.encrypted_password) == params[:password]
           token = JsonWebToken.encode(user_id: @user.id)
           time = Time.now + 24.hours.to_i
           render json: { token: token, exp: time.strftime('%m-%d-%Y %H:%M'),
