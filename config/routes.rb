@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post 'users/login' => 'users#login'
-      get  'users/posts/getpostcomments' => 'posts#list_comments'
+      post  'users/posts/getpostcomments' => 'posts#list_comments'
       post 'users/posts/commentonpost' => 'posts#add_comment'
       resources :users, only: [:index, :show]
     end

@@ -31,12 +31,13 @@ describe 'Users API' do
     end
 
     path '/api/v1/users' do
-        get 'List of all users' do
+        get 'List of all users, ensure to add token as Authorization header' do
             tags 'User'
-            consumes 'application/json'
+            produces 'application/json'
             security [ JWT: {} ]
+            parameter name: 'Authorization', :in => :header, :type => :string
             response '200', 'Users list' do
-              let(:'Authorization') { "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNjA5LCJleHAiOjE2NTI1NDEzMDB9.bfgTvKFdiOEx1NvPgjSlBl23mf0zqjrQDSxSVleXeZ4" }
+              let(:'Authorization') { "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNjUwLCJleHAiOjE2NTI1NTM3NTd9.f6qq8VRXV0Vs12-DEM8go7dKa1bkooaqN7HNUMny_do" }
               run_test! do |response|
                 data = JSON.parse(response.body)
                 expect(data.length).to be > 0

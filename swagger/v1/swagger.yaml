@@ -1,0 +1,125 @@
+---
+swagger: '2.0'
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/users/posts/getpostcomments":
+    post:
+      summary: List of comments for a particular user
+      tags:
+      - Comments
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+      - name: params
+        in: body
+        schema:
+          type: object
+          properties:
+            user_id:
+              type: integer
+            post_id:
+              type: integer
+          required:
+          - user_id
+          - post_id
+      security:
+      - JWT: {}
+      responses:
+        '200':
+          description: Comments list
+        '404':
+          description: post not found
+  "/api/v1/users/posts/commentonpost":
+    post:
+      summary: user comment on a particular post, ensure to add token as Authorization
+        header
+      tags:
+      - Post Comment
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+      - name: params
+        in: body
+        schema:
+          type: object
+          properties:
+            text:
+              type: string
+            post_id:
+              type: integer
+          required:
+          - post_id
+          - text
+      security:
+      - JWT: {}
+      responses:
+        '200':
+          description: Post user comment, ensure to add token as Authorization header
+        '404':
+          description: post not found
+  "/api/v1/users/login":
+    post:
+      summary: Authentication to get jwt token
+      tags:
+      - User
+      consumes:
+      - application/json
+      parameters:
+      - name: params
+        in: body
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+            password:
+              type: string
+          required:
+          - email
+          - password
+      responses:
+        '200':
+          description: Login Successful
+        '401':
+          description: Unauthorized
+  "/api/v1/users":
+    get:
+      summary: List of all users, ensure to add token as Authorization header
+      tags:
+      - User
+      produces:
+      - application/json
+      security:
+      - JWT: {}
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+      responses:
+        '200':
+          description: Users list
+        '401':
+          description: Users list
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
+securityDefinitions:
+  JWT:
+    description: the jwt for API auth
+    type: apiKey
+    name: Authorization
+    in: header
