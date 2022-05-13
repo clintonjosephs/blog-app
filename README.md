@@ -1,10 +1,12 @@
-# Rails Blog App
+# Blog App
 
-![screenshot](app/assets/images/signin.png)
+![screenshot](app/assets/images/demo.gif)
+
+![screenshot](app/assets/images/swagger.png)
 
 ## Project Description
 
-The Blog app is a classic example of a blog website. I created a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
+The Blog app is a classic example of a blog website. I created a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts. It is also furnished with user management using the devise gem and api integration interface to enable developers plug in easily and use with different front-end.
 
 
 ## Built With
@@ -12,6 +14,18 @@ The Blog app is a classic example of a blog website. I created a fully functiona
 - Ruby
 - Ruby on Rails
 - Rubocop
+- Gems
+  - Rspec
+  - Capybara
+  - Swagger-UI
+  - JWT Authentication
+  - FactoryBot
+  - Selenium-webdriver
+  - Bcrypt
+  - Letter-opener
+  - Faker
+  - cancancan
+  - Devise
 
 # Get Started
 Follow these steps below:
@@ -62,6 +76,9 @@ $ rails server
 ```
 
 Open [http://localhost:3000/](http://localhost:3000/) in your browser
+
+## API Documentation using SWAGGER-UI
+Open [http://localhost:3000/api-docs/index.html](http://localhost:3000/api-docs/index.html) in your browser
 
 ## Author
 

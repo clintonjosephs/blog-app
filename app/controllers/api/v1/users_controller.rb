@@ -5,6 +5,7 @@ module Api
     class UsersController < ApiController
       include BCrypt
       before_action :authorize_request, except: :login
+
       def index
         users = User.all
         render json: { status: 'SUCCESS', message: 'Loaded users successfully', data: users }, status: :ok
@@ -12,11 +13,15 @@ module Api
 
       def login
         @user = User.find_by_email(params[:email])
-        if Password.new(@user.encrypted_password) == params[:password]
-          token = JsonWebToken.encode(user_id: @user.id)
-          time = Time.now + 24.hours.to_i
-          render json: { token: token, exp: time.strftime('%m-%d-%Y %H:%M'),
-                         Name: @user.Name }, status: :ok
+        if @user
+          if Password.new(@user.encrypted_password) == params[:password]
+            token = JsonWebToken.encode(user_id: @user.id)
+            time = Time.now + 24.hours.to_i
+            render json: { token: token, exp: time.strftime('%m-%d-%Y %H:%M'),
+                           Name: @user.Name }, status: :ok
+          else
+            render json: { error: 'unauthorized' }, status: :unauthorized
+          end
         else
           render json: { error: 'unauthorized' }, status: :unauthorized
         end
