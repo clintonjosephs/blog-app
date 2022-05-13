@@ -12,9 +12,7 @@ class Api::V1::ApiController < ActionController::API
     rescue ActiveRecord::RecordNotFound => e
       render json: { errors: e.message }, status: :unauthorized
     rescue JWT::DecodeError => e
-      puts 'JESUS'
-      puts request.headers.inspect
-      render json: { errors: e.message}, status: :unauthorized
+      render json: { errors: e.message }, status: :unauthorized
     end
   end
 end
