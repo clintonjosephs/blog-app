@@ -31,7 +31,15 @@ RSpec.configure do |config|
             }
           }
         }
-      ]
+      ],
+      securityDefinitions: {
+        JWT: {
+          description: 'the jwt for API auth',
+          type: :apiKey,
+          name: 'Authorization',
+          in: :header
+        }
+      }
     }
   }
 
