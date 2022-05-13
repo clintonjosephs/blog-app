@@ -5,6 +5,7 @@ module Api
     class UsersController < ApiController
       include BCrypt
       before_action :authorize_request, except: :login
+      
       def index
         users = User.all
         render json: { status: 'SUCCESS', message: 'Loaded users successfully', data: users }, status: :ok
