@@ -73,4 +73,37 @@ describe 'Posts API' do
       end
     end
   end
+
+  path '/api/v1/users/{user_id}/posts' do
+        get 'List of posts for a particular user' do
+            tags 'Posts'
+            produces 'application/json'
+            parameter name: :Authorization, in: :header, type: :string
+            parameter name: :user_id, :in => :path, :type => :integer
+            security [JWT: {}]
+            response '200', 'Posts list' do
+                @user = FactoryBot.create(:user)
+                m = 3
+                while m > 0
+                    @post = FactoryBot.create(:post, user_id: @user.id, Title: 'Sample Post', Text: 'Sample Text')
+                    m -= 1
+                end
+                p = @post.id
+                u = @user.id
+                let(:Authorization) do
+                    'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNjUwLCJleHAiOjE2NTI1NTM3NTd9.f6qq8VRXV0Vs12-DEM8go7dKa1bkooaqN7HNUMny_do'
+                end
+                let(:user_id) { u }
+                run_test!
+            end
+
+            response '401', 'Unauthorized' do
+                let(:Authorization) do
+                    ''
+                end
+                let(:user_id) { '12' }
+                run_test!
+            end
+        end
+    end
 end

@@ -37,7 +37,8 @@ module Api
 
       def users_posts
         user_id = params[:user_id]
-        if user_id
+        @user = User.find(user_id)
+        if user_id && @user
           posts = Post.where(user_id: user_id)
           render json: { status: 'SUCCESS', message: 'Loaded posts successfully', data: posts },
                  status: :ok
