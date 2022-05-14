@@ -23,20 +23,20 @@ module Api
             render json: { error: 'unauthorized' }, status: :unauthorized
           end
         else
-          render json: { error: 'unauthorized' }, status: :unauthorized
+          render json: { error: 'unauthorized', error_message: @user.errors }, status: :unauthorized
         end
       end
 
       def signup
-        puts params
         @user = User.new(signup_params)
+        puts params
         if @user.save
           token = JsonWebToken.encode(user_id: @user.id)
           time = Time.now + 24.hours.to_i
           render json: { token: token, exp: time.strftime('%m-%d-%Y %H:%M'),
                          Name: @user.Name }, status: :ok
         else
-          render json: { error: 'unauthorized' }, status: :unauthorized
+          render json: { error: 'unauthorized', error_message: @user.errors }, status: :unauthorized
         end
       end
 
