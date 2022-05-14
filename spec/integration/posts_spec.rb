@@ -1,20 +1,15 @@
 require 'swagger_helper'
 
 describe 'Posts API' do
-  path '/api/v1/users/posts/getpostcomments' do
-    post 'List of comments for a particular user' do
+   
+  path '/api/v1/users/{user_id}/posts/{post_id}/comments' do
+    get 'List of comments for a particular user' do
       tags 'Comments'
       produces 'application/json'
       consumes 'application/json'
       parameter name: :Authorization, in: :header, type: :string
-      parameter name: :params, in: :body, schema: {
-        type: :object,
-        properties: {
-          user_id: { type: :integer },
-          post_id: { type: :integer }
-        },
-        required: %w[user_id post_id]
-      }
+      parameter name: :user_id, :in => :path, :type => :integer
+      parameter name: :post_id, :in => :path, :type => :integer
       security [JWT: {}]
       response '200', 'Comments list' do
         @user = FactoryBot.create(:user)
@@ -29,17 +24,17 @@ describe 'Posts API' do
         let(:Authorization) do
           'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNjUwLCJleHAiOjE2NTI1NTM3NTd9.f6qq8VRXV0Vs12-DEM8go7dKa1bkooaqN7HNUMny_do'
         end
-        let(:params) { { post_id: p, user_id: u } }
+        let(:post_id) { p }
+        let(:user_id) { u }
         run_test!
       end
 
-      response '404', 'post not found' do
-        let(:Authorization) do
-          'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNjUwLCJleHAiOjE2NTI1NTM3NTd9.f6qq8VRXV0Vs12-DEM8go7dKa1bkooaqN7HNUMny_do'
+        response '401', 'Unauthorized' do
+            let(:Authorization) { '' }
+            let(:post_id) { 12 }
+            let(:user_id) { 4 }
+            run_test!
         end
-        let(:params) { {} }
-        run_test!
-      end
     end
   end
 

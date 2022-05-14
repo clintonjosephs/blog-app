@@ -4,9 +4,11 @@ module Api
       before_action :authorize_request
 
       def list_comments
+        puts params
         user_id = params[:user_id]
         post_id = params[:post_id]
-        if user_id && post_id
+        @post = Post.find(post_id)
+        if user_id && post_id && @post
           comments = Comment.where(user_id: user_id, post_id: post_id)
           render json: { status: 'SUCCESS', message: 'Loaded comments successfully', data: comments },
                  status: :ok
