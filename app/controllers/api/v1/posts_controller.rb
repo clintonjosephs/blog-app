@@ -32,6 +32,17 @@ module Api
           render json: { status: 'ERROR', message: 'Parameters incomplete' }, status: :not_found
         end
       end
+
+      def users_posts
+        user_id = params[:user_id]
+        if user_id
+          posts = Post.where(user_id: user_id)
+          render json: { status: 'SUCCESS', message: 'Loaded posts successfully', data: posts },
+                 status: :ok
+        else
+          render json: { status: 'ERROR', message: 'User not found' }, status: :not_found
+        end
+      end
     end
   end
 end

@@ -4,7 +4,7 @@ module Api
     require 'bcrypt'
     class UsersController < ApiController
       include BCrypt
-      before_action :authorize_request, except: :login
+      before_action :authorize_request, except: [:login, :signup]
 
       def index
         users = User.all
@@ -27,10 +27,26 @@ module Api
         end
       end
 
+      def signup
+        @user = User.new(signup_params)
+        if @user.save
+          token = JsonWebToken.encode(user_id: @user.id)
+          time = Time.now + 24.hours.to_i
+          render json: { token: token, exp: time.strftime('%m-%d-%Y %H:%M'),
+                         Name: @user.Name }, status: :ok
+        else
+          render json: { error: 'unauthorized' }, status: :unauthorized
+        end
+      end
+
       private
 
       def login_params
         params.permit(:email, :password)
+      end
+
+      def signup_params
+        params.permit(:Name, :Photo, :Bio, :email, :password, :password_confirmation, :confirmed_at, :role)
       end
     end
   end

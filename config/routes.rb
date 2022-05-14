@@ -20,8 +20,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post 'users/login' => 'users#login'
-      post  'users/posts/getpostcomments' => 'posts#list_comments'
+      post 'users/signup' => 'users#signup'
       post 'users/posts/commentonpost' => 'posts#add_comment'
+      get  'users/:user_id/posts/:post_id/comments' => 'posts#list_comments'
+      get  'users/:user_id/posts' => 'posts#users_posts'
       resources :users, only: [:index, :show]
     end
   end
