@@ -28,6 +28,7 @@ module Api
       end
 
       def signup
+        puts params
         @user = User.new(signup_params)
         if @user.save
           token = JsonWebToken.encode(user_id: @user.id)

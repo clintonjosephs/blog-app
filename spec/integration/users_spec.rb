@@ -52,4 +52,44 @@ describe 'Users API' do
       end
     end
   end
+
+  path '/api/v1/users/signup' do
+    post 'Register a new user' do
+        tags 'User Registration'
+        consumes 'application/json'
+        parameter name: :params, in: :body, schema: {
+            type: :object,
+            properties: {
+                Name: { type: :string },
+                email: { type: :string },
+                password: { type: :string },
+                password_confirmation: { type: :string },
+                Bio: { type: :string },
+                confirmed_at: { type: :string },
+                Photo: {type: :string},
+                role: {type: :string}
+             },  
+             required: %w[Name email password password_confirmation Bio confirmed_at Photo role]
+        }
+        response '200', 'User created' do
+            let(:params) { 
+                { 
+                  Name: Faker::Name.name, 
+                  email: Faker::Internet.email, 
+                  password: 'secret', 
+                  password_confirmation: 'secret', 
+                  Bio: Faker::Lorem.sentence, 
+                  confirmed_at: Time.now, 
+                  Photo: Faker::Avatar.image, 
+                  role: '' } 
+                }
+            run_test!
+        end
+
+        response '401', 'Invalid request' do
+            let(:params) { { email: '' }}
+            run_test!
+        end
+    end
+  end
 end
