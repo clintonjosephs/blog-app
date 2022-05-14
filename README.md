@@ -2,7 +2,7 @@
 
 ![screenshot](app/assets/images/demo.gif)
 
-![screenshot](app/assets/images/swagger.png)
+![screenshot](app/assets/images/endpoints.png)
 
 ## Project Description
 

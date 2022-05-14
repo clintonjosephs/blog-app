@@ -4,8 +4,8 @@ info:
   title: API V1
   version: v1
 paths:
-  "/api/v1/users/posts/getpostcomments":
-    post:
+  "/api/v1/users/{user_id}/posts/{post_id}/comments":
+    get:
       summary: List of comments for a particular user
       tags:
       - Comments
@@ -17,25 +17,21 @@ paths:
       - name: Authorization
         in: header
         type: string
-      - name: params
-        in: body
-        schema:
-          type: object
-          properties:
-            user_id:
-              type: integer
-            post_id:
-              type: integer
-          required:
-          - user_id
-          - post_id
+      - name: user_id
+        in: path
+        type: integer
+        required: true
+      - name: post_id
+        in: path
+        type: integer
+        required: true
       security:
       - JWT: {}
       responses:
         '200':
           description: Comments list
-        '404':
-          description: post not found
+        '401':
+          description: Unauthorized
   "/api/v1/users/posts/commentonpost":
     post:
       summary: user comment on a particular post, ensure to add token as Authorization
@@ -69,6 +65,28 @@ paths:
           description: Post user comment, ensure to add token as Authorization header
         '404':
           description: post not found
+  "/api/v1/users/{user_id}/posts":
+    get:
+      summary: List of posts for a particular user
+      tags:
+      - Posts
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+      - name: user_id
+        in: path
+        type: integer
+        required: true
+      security:
+      - JWT: {}
+      responses:
+        '200':
+          description: Posts list
+        '401':
+          description: Unauthorized
   "/api/v1/users/login":
     post:
       summary: Authentication to get jwt token
@@ -112,6 +130,49 @@ paths:
           description: Users list
         '401':
           description: Users list
+  "/api/v1/users/signup":
+    post:
+      summary: Register a new user
+      tags:
+      - User Registration
+      consumes:
+      - application/json
+      parameters:
+      - name: params
+        in: body
+        schema:
+          type: object
+          properties:
+            Name:
+              type: string
+            email:
+              type: string
+            password:
+              type: string
+            password_confirmation:
+              type: string
+            Bio:
+              type: string
+            confirmed_at:
+              type: string
+            Photo:
+              type: string
+            role:
+              type: string
+          required:
+          - Name
+          - email
+          - password
+          - password_confirmation
+          - Bio
+          - confirmed_at
+          - Photo
+          - role
+      responses:
+        '200':
+          description: User created
+        '401':
+          description: Invalid request
 servers:
 - url: http://{defaultHost}
   variables:
