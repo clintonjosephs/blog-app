@@ -77,7 +77,7 @@ $ rails server
 
 Open [http://localhost:3000/](http://localhost:3000/) in your browser
 
-## API Documentation using SWAGGER-UI
+## API Documentation using Swagger-UI
 Open [http://localhost:3000/api-docs/index.html](http://localhost:3000/api-docs/index.html) in your browser
 
 ## Author
